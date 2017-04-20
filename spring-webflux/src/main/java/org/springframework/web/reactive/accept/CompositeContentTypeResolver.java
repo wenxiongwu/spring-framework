@@ -37,12 +37,11 @@ import org.springframework.web.server.ServerWebExchange;
  * @author Rossen Stoyanchev
  * @since 5.0
  */
-public class CompositeContentTypeResolver implements MappingContentTypeResolver {
-
+public class CompositeContentTypeResolver implements MappingContentTypeResolver 
+{
 	private final List<RequestedContentTypeResolver> resolvers = new ArrayList<>();
-
-
-	public CompositeContentTypeResolver(List<RequestedContentTypeResolver> resolvers) {
+	public CompositeContentTypeResolver(List<RequestedContentTypeResolver> resolvers) 
+	{
 		Assert.notEmpty(resolvers, "At least one resolver is expected.");
 		this.resolvers.addAll(resolvers);
 	}
@@ -51,7 +50,8 @@ public class CompositeContentTypeResolver implements MappingContentTypeResolver 
 	/**
 	 * Return a read-only list of the configured resolvers.
 	 */
-	public List<RequestedContentTypeResolver> getResolvers() {
+	public List<RequestedContentTypeResolver> getResolvers() 
+	{
 		return Collections.unmodifiableList(this.resolvers);
 	}
 
@@ -61,9 +61,12 @@ public class CompositeContentTypeResolver implements MappingContentTypeResolver 
 	 * @return the first matching resolver or {@code null}.
 	 */
 	@SuppressWarnings("unchecked")
-	public <T extends RequestedContentTypeResolver> T findResolver(Class<T> resolverType) {
-		for (RequestedContentTypeResolver resolver : this.resolvers) {
-			if (resolverType.isInstance(resolver)) {
+	public <T extends RequestedContentTypeResolver> T findResolver(Class<T> resolverType) 
+	{
+		for (RequestedContentTypeResolver resolver : this.resolvers) 
+		{
+			if (resolverType.isInstance(resolver))
+			{
 				return (T) resolver;
 			}
 		}
